@@ -58,6 +58,9 @@ export default () => {
             <MovieRow key={key} title={item.title} items={item.items}/>
         ))}
      </section>
+     <footer>
+       Feito para portifólio teste automatizado, Diniz <span className="icon" role="img" aria-label="caração">❤</span>
+     </footer>
     </div>
   )
 }

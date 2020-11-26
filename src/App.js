@@ -59,7 +59,7 @@ export default () => {
         ))}
      </section>
      <footer>
-       Feito para portifólio teste automatizado, Diniz <span className="icon" role="img" aria-label="caração">❤</span>
+       Feito para portifólio teste automatizado, Diniz <span className="icon" role="img" aria-label="phone">🎧</span>
      </footer>
     </div>
   )

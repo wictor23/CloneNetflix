@@ -7,13 +7,9 @@ Realizado para aprendizado de como funciona o react
 ```bash
 yarn install
 ```
-
-## Para mudar o Tenant:
-
-Simplismente execute o config do Tenant. Veja um exemplo com Oferta Play:
-
+2. Iniciar aplicação
 ```bash
-npm run config:oferta
+yarn install
 ```
 
 ## Para testar:

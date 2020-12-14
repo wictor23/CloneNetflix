@@ -1,26 +1,10 @@
-# Sensi Marketplace Admin
+# Clone netflix
 
-Aplicação web responsável pela gestão de dados do Marketplace Sensi
-Esta aplicação pode ser configurada para múltiplos clientes Sensi, que chamamos aqui de Tenant.
-
-Os Tenants disponíveis atualmente são:
-* Buriti: *Shopping Buriti* em Goiânia
-* Oferta: aplicativo *Oferta play*
-* Sandbox: ambiente *Sandbox* para testes da *Sensi*
-
-## Para desenvolver:
+## Para subir aplicação:
 
 1. Instale as dependências
 ```bash
-npm install
-```
-2. Configure com tenant:
-```bash
-npm run config:sandbox
-```
-3. Inicie em modo debug:
-```bash
-npm start
+yarn install
 ```
 
 ## Para mudar o Tenant:

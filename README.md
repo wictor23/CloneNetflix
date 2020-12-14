@@ -1,4 +1,5 @@
 # Clone netflix
+Realizado para aprendizado de como funciona o react
 
 ## Para subir aplicação:
 

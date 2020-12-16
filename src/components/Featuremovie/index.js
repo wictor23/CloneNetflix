@@ -23,8 +23,8 @@ export default ({item}) => {
                     </div>
                         <div className="featured--description">{item.overview.length < 400 ? item.overview : `${item.overview.slice(0,400)}...`}</div>
                         <div className="featured--buttons">
-                            <a href={`/watch/${item.id}`} className="featured--watchbutton">► Assistir</a>
-                            <a href={`/list/add/${item.id}`} className="featured--mylistbutton">+ Minha Lista</a>
+                            <a href={`/watch/${item.id}`} className="featured--watchbutton" id="btnAssistir" >► Assistir</a>
+                            <a href={`/list/add/${item.id}`} className="featured--mylistbutton"id="btnMinhaLista" >+ Minha Lista</a>
                         </div>
                     <div className="featured--genres">Gêneros: <strong> {genres.join(', ')} </strong></div>
                 </div>

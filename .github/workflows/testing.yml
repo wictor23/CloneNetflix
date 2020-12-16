@@ -1,29 +1,51 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
+name: Test e2e
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev, master ]
+
 
 jobs:
-  build:
 
+  test-e2e:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
+    timeout-minutes: 40
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Cache node modules
+      id: cache-primes
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    
+    - name: Start application and start test e2e
+      run: |
+        npm install
+        yarn start&
+        npx wait-on --timeout 480000 http://localhost:3000 && npx cypress run
+    - name: Upload Imagens
+      uses: actions/checkout@v2
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: Resultado teste e2e
+        retention-days: 2
+        path: |
+          cypress/screenshots/
+          cypress/videos/
+    - name: Download Imagens
+      uses: actions/checkout@v2
+    - uses: actions/download-artifact@v2
+      if: failure()
+      with:
+        name: Result Test
+        run: ls -R

@@ -11,7 +11,7 @@ yarn install
 ```bash
 yarn install
 ```
-![Alt text](./image/home.png "Title")
+![Alt text](./image/home.png "Title");
 ## Para testar:
 
 <p align="center">
